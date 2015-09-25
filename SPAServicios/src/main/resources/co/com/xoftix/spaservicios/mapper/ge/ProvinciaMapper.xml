@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+		PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="co.com.xoftix.spaservicios.mapper.ge.ProvinciaMapper">
+	  <cache type="org.mybatis.caches.hazelcast.LoggingHazelcastCache"/>
+	<select id="consultar"  resultType="Provincia" parameterType="Provincia" useCache="true">
+		select
+			provi.id as  id
+			,provi.id_pais as  idPais
+			,provi.id_distritojudicial as  idDistritoJudicial
+			,provi.nombre as  nombre
+			,provi.escomarca as  esComarca
+			,provi.codigo as  codigo
+			,provi.activo as activo
+		from ge_provincia_tb as provi
+		<include refid="whereFragment" />
+	</select>
+ 	
+ 	<sql id="wherePrimaryKeyFragment">
+	  where
+	   id = #{id} 
+ 	</sql>
+ 	
+ 	<sql id="whereFragment">
+		<where>
+			<if test="id !=null">
+				provi.id = #{id} 
+			</if>
+			<if test="idPais !=null">
+				AND provi.id_pais = #{idPais} 
+			</if>
+			<if test="idDistritoJudicial !=null">
+				AND provi.id_distritojudicial = #{idDistritoJudicial} 
+			</if>
+			<if test="nombre !=null">
+				AND provi.nombre like #{nombre} 
+			</if>
+			<if test="esComarca !=null">
+				AND provi.escomarca = #{esComarca} 
+			</if>
+			<if test="codigo !=null">
+				AND provi.codigo = #{codigo} 
+			</if>
+			<if test="activo !=null">
+				AND provi.activo = #{activo} 
+			</if>
+		</where>
+	</sql>
+ 	
+	
+</mapper>

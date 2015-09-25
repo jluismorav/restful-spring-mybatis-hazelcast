@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="co.com.xoftix.spaservicios.mapper.nc.NoticiaCriminal">
+	<sql id="selectFragment">
+		select
+			id as  id
+			,numero as  numero
+			,id_unidadreceptora as  idUnidadreceptora
+			,id_provincia as  idProvincia
+			,id_distrito as  idDistrito
+			,id_corregimiento as  idCorregimiento
+			,id_poblado as  idPoblado
+			,id_barriada as  idBarriada
+			,lugarocurrencia as  lugarOcurrencia
+			,fechainicial as  fechaInicial
+			,fechafinal as  fechaFinal
+			,fechaconocimiento as  fechaConocimiento
+			,relatohechos as  relatoHechos
+			,refexp as  refExp
+			,nombreremitente as  nombreRemitente
+			,cargoremitente as  cargoRemitente
+			,fecharemite as  fechaRemite
+			,fechahoraregistro as  fechaHoraRegistro
+			,estimacioncuantia as  estimacionCuantia
+			,observacioncambioestado as  observacionCambioEstado
+			,id_sedeprimerinterviniente as  idSedePrimerInterviniente
+			,id_oficinaatiendecaso as  idOficinaAtiendeCaso
+			,estimaciondano as  estimacionDano
+			,id_mensaje as  idMensaje
+			,idr2police as  idR2Police
+			,id_estadonoticia as  idEstadoNoticia
+			,id_tiponoticia as  idTipoNoticia
+			,id_modooperacion as  idModoOperacion
+			,id_institucion as  idInstitucion
+			,id_tipoprimerinterviniente as  idTipoPrimerInterviniente
+			,id_especialidadservicio as  idEspecialidadServicio
+			,id_remitente as  idRemitente
+			,id_finalizador as  idFinalizador
+			,fechahorafinal as  fechaHoraFinal
+			,referencia as  referencia
+			,manual as  manual
+			,esnoticiacriminal as  esNoticiaCriminal
+			,id_origen as  idOrigen
+			,fechainforme as fechaInforme
+			,(SELECT formal FROM nc_tiponoticia_tb where nc_tiponoticia_tb.id= nc_noticiacriminal_tb.id_tiponoticia) as tipoNoticiaFormal
+		from nc_noticiacriminal_tb
+	</sql>
+
+	<sql id="whereFragment">
+		<where>
+			<if test="id !=null">
+				id = #{id} 
+			</if>
+			<if test="numero !=null">
+				AND numero like #{numero} 
+			</if>
+			<if test="idUnidadreceptora !=null">
+				AND id_unidadreceptora = #{idUnidadreceptora} 
+			</if>
+			<if test="idProvincia !=null">
+				AND id_provincia = #{idProvincia} 
+			</if>
+			<if test="idDistrito !=null">
+				AND id_distrito = #{idDistrito} 
+			</if>
+			<if test="idCorregimiento !=null">
+				AND id_corregimiento = #{idCorregimiento} 
+			</if>
+			<if test="idPoblado !=null">
+				AND id_poblado = #{idPoblado} 
+			</if>
+			<if test="idBarriada !=null">
+				AND id_barriada = #{idBarriada} 
+			</if>
+			<if test="lugarOcurrencia !=null">
+				AND lugarocurrencia like #{lugarOcurrencia} 
+			</if>
+			<if test="fechaInicial !=null">
+				AND fechainicial = #{fechaInicial} 
+			</if>
+			<if test="fechaFinal !=null">
+				AND fechafinal = #{fechaFinal} 
+			</if>
+			<if test="fechaConocimiento !=null">
+				AND fechaconocimiento = #{fechaConocimiento} 
+			</if>
+			<if test="relatoHechos !=null">
+				AND relatohechos like #{relatoHechos} 
+			</if>
+			<if test="refExp !=null">
+				AND refexp like #{refExp} 
+			</if>
+			<if test="nombreRemitente !=null">
+				AND nombreremitente like #{nombreRemitente} 
+			</if>
+			<if test="cargoRemitente !=null">
+				AND cargoremitente like #{cargoRemitente} 
+			</if>
+			<if test="fechaRemite !=null">
+				AND fecharemite = #{fechaRemite} 
+			</if>
+			<if test="fechaHoraRegistro !=null">
+				AND fechahoraregistro = #{fechaHoraRegistro} 
+			</if>
+			<if test="estimacionCuantia !=null">
+				AND estimacioncuantia = #{estimacionCuantia} 
+			</if>
+			<if test="observacionCambioEstado !=null">
+				AND observacioncambioestado like #{observacionCambioEstado} 
+			</if>
+			<if test="idSedePrimerInterviniente !=null">
+				AND id_sedeprimerinterviniente = #{idSedePrimerInterviniente} 
+			</if>
+			<if test="idOficinaAtiendeCaso !=null">
+				AND id_oficinaatiendecaso = #{idOficinaAtiendeCaso} 
+			</if>
+			<if test="estimacionDano !=null">
+				AND estimaciondano = #{estimacionDano} 
+			</if>
+			<if test="idMensaje !=null">
+				AND id_mensaje = #{idMensaje} 
+			</if>
+			<if test="idR2Police !=null">
+				AND idr2police like #{idR2Police} 
+			</if>
+			<if test="idEstadoNoticia !=null">
+				AND id_estadonoticia = #{idEstadoNoticia} 
+			</if>
+			<if test="idTipoNoticia !=null">
+				AND id_tiponoticia = #{idTipoNoticia} 
+			</if>
+			<if test="idModoOperacion !=null">
+				AND id_modooperacion = #{idModoOperacion} 
+			</if>
+			<if test="idInstitucion !=null">
+				AND id_institucion = #{idInstitucion} 
+			</if>
+			<if test="idTipoPrimerInterviniente !=null">
+				AND id_tipoprimerinterviniente = #{idTipoPrimerInterviniente} 
+			</if>
+			<if test="idEspecialidadServicio !=null">
+				AND id_especialidadservicio = #{idEspecialidadServicio} 
+			</if>
+			<if test="idRemitente !=null">
+				AND id_remitente = #{idRemitente} 
+			</if>
+			<if test="idFinalizador !=null">
+				AND id_finalizador = #{idFinalizador} 
+			</if>
+			<if test="fechaHoraFinal !=null">
+				AND fechahorafinal = #{fechaHoraFinal} 
+			</if>
+			<if test="referencia !=null">
+				AND referencia like #{referencia} 
+			</if>
+			<if test="manual !=null">
+				AND manual = #{manual} 
+			</if>
+			<if test="esNoticiaCriminal !=null">
+				AND esnoticiacriminal = #{esNoticiaCriminal} 
+			</if>
+			<if test="idOrigen !=null">
+				AND id_origen = #{idOrigen} 
+			</if>
+			<if test="fechaInforme !=null">
+				AND fechainforme = #{fechaInforme} 
+			</if>
+		</where>
+	</sql>
+
+
+	<sql id="wherePrimaryKeyFragment">
+		where
+			id	= #{id} 
+	</sql>
+
+
+	<select id="consultar" parameterType="NoticiaCriminal" resultType="NoticiaCriminal">
+		<include refid="selectNoticiaCriminalFragment" />
+		<include refid="whereNoticiaCriminalFragment" />
+	</select>
+	
+	<select id="convertirANoticiaCriminal" parameterType="NoticiaCriminal" statementType="CALLABLE">
+	{CALL nc_convertirinformepiennoticia_sp(#{id,mode=IN,jdbcType=NUMERIC},#{esNoticiaCriminal,mode=OUT,jdbcType=TINYINT},#{idEstadoNoticia,mode=OUT,jdbcType=NUMERIC},#{numero,mode=OUT,jdbcType=VARCHAR})}
+    </select>
+
+	<select id="convertirANoticiaCriminalInformeAnonimo" parameterType="NoticiaCriminal" statementType="CALLABLE">
+	{CALL nc_creanoticiacriminaldesdeinformeanonimo_sp(#{id,mode=IN,jdbcType=NUMERIC},#{idPoblado,mode=IN,jdbcType=NUMERIC},#{id,mode=OUT,jdbcType=NUMERIC},#{idEstadoNoticia,mode=OUT,jdbcType=NUMERIC},#{numero,mode=OUT,jdbcType=VARCHAR},#{esNoticiaCriminal,mode=OUT,jdbcType=TINYINT},#{idOrigen,mode=OUT,jdbcType=NUMERIC},#{manual,mode=OUT,jdbcType=TINYINT})}
+    </select>
+    
+    <select id="cargarDatosGeograficos" parameterType="NoticiaCriminal" statementType="CALLABLE">
+	{CALL nc_cargardatosgeograficos_sp(#{idPoblado,mode=IN,jdbcType=NUMERIC},#{idCorregimiento,mode=OUT,jdbcType=NUMERIC},#{idDistrito,mode=OUT,jdbcType=NUMERIC},#{idProvincia,mode=OUT,jdbcType=NUMERIC})}
+    </select>
+
+	<select id="cantidadRegistros" parameterType="NoticiaCriminal" resultType="int">
+		select count(*)
+		from nc_noticiacriminal_tb
+		<include refid="whereFragment" />
+	</select>
+
+
+	<insert id="insertar" useGeneratedKeys="true" keyProperty="id" parameterType="NoticiaCriminal">
+		insert into nc_noticiacriminal_tb(
+			id
+			,numero
+			,id_unidadreceptora
+			,id_provincia
+			,id_distrito
+			,id_corregimiento
+			,id_poblado
+			,id_barriada
+			,lugarocurrencia
+			,fechainicial
+			,fechafinal
+			,fechaconocimiento
+			,relatohechos
+			,refexp
+			,nombreremitente
+			,cargoremitente
+			,fecharemite
+			,fechahoraregistro
+			,estimacioncuantia
+			,observacioncambioestado
+			,id_sedeprimerinterviniente
+			,id_oficinaatiendecaso
+			,estimaciondano
+			,id_mensaje
+			,idr2police
+			,id_estadonoticia
+			,id_tiponoticia
+			,id_modooperacion
+			,id_institucion
+			,id_tipoprimerinterviniente
+			,id_especialidadservicio
+			,id_remitente
+			,id_finalizador
+			,fechahorafinal
+			,referencia
+			,manual
+			,esnoticiacriminal
+			,id_origen
+			,fechainforme
+		) values (
+			#{id, jdbcType=NUMERIC}
+			,#{numero, jdbcType=VARCHAR}
+			,#{idUnidadreceptora, jdbcType=NUMERIC}
+			,#{idProvincia, jdbcType=NUMERIC}
+			,#{idDistrito, jdbcType=NUMERIC}
+			,#{idCorregimiento, jdbcType=NUMERIC}
+			,#{idPoblado, jdbcType=NUMERIC}
+			,#{idBarriada, jdbcType=NUMERIC}
+			,#{lugarOcurrencia, jdbcType=VARCHAR}
+			,#{fechaInicial, jdbcType=TIMESTAMP}
+			,#{fechaFinal, jdbcType=TIMESTAMP}
+			,#{fechaConocimiento, jdbcType=TIMESTAMP}
+			,#{relatoHechos, jdbcType=VARCHAR}
+			,#{refExp, jdbcType=VARCHAR}
+			,#{nombreRemitente, jdbcType=VARCHAR}
+			,#{cargoRemitente, jdbcType=VARCHAR}
+			,#{fechaRemite, jdbcType=TIMESTAMP}
+			,#{fechaHoraRegistro, jdbcType=TIMESTAMP}
+			,#{estimacionCuantia, jdbcType=NUMERIC}
+			,#{observacionCambioEstado, jdbcType=VARCHAR}
+			,#{idSedePrimerInterviniente, jdbcType=NUMERIC}
+			,#{idOficinaAtiendeCaso, jdbcType=NUMERIC}
+			,#{estimacionDano, jdbcType=NUMERIC}
+			,#{idMensaje, jdbcType=NUMERIC}
+			,#{idR2Police, jdbcType=VARCHAR}
+			,#{idEstadoNoticia, jdbcType=NUMERIC}
+			,#{idTipoNoticia, jdbcType=NUMERIC}
+			,#{idModoOperacion, jdbcType=NUMERIC}
+			,#{idInstitucion, jdbcType=NUMERIC}
+			,#{idTipoPrimerInterviniente, jdbcType=NUMERIC}
+			,#{idEspecialidadServicio, jdbcType=NUMERIC}
+			,#{idRemitente, jdbcType=NUMERIC}
+			,#{idFinalizador, jdbcType=NUMERIC}
+			,#{fechaHoraFinal, jdbcType=TIMESTAMP}
+			,#{referencia, jdbcType=VARCHAR}
+			,#{manual, jdbcType=TINYINT}
+			,#{esNoticiaCriminal, jdbcType=TINYINT}
+			,#{idOrigen, jdbcType=NUMERIC}
+			,#{fechaInforme, jdbcType=TIMESTAMP}
+		)
+	</insert>
+
+	<update id="actualizar" parameterType="NoticiaCriminal">
+		update nc_noticiacriminal_tb
+			set
+				numero	=#{numero, jdbcType=VARCHAR},
+				id_unidadreceptora	=#{idUnidadreceptora, jdbcType=NUMERIC},
+				id_provincia	=#{idProvincia, jdbcType=NUMERIC},
+				id_distrito	=#{idDistrito, jdbcType=NUMERIC},
+				id_corregimiento	=#{idCorregimiento, jdbcType=NUMERIC},
+				id_poblado	=#{idPoblado, jdbcType=NUMERIC},
+				id_barriada	=#{idBarriada, jdbcType=NUMERIC},
+				lugarocurrencia	=#{lugarOcurrencia, jdbcType=VARCHAR},
+				fechainicial	=#{fechaInicial, jdbcType=TIMESTAMP},
+				fechafinal	=#{fechaFinal, jdbcType=TIMESTAMP},
+				fechaconocimiento	=#{fechaConocimiento, jdbcType=TIMESTAMP},
+				relatohechos	=#{relatoHechos, jdbcType=VARCHAR},
+				refexp	=#{refExp, jdbcType=VARCHAR},
+				nombreremitente	=#{nombreRemitente, jdbcType=VARCHAR},
+				cargoremitente	=#{cargoRemitente, jdbcType=VARCHAR},
+				fecharemite	=#{fechaRemite, jdbcType=TIMESTAMP},
+				fechahoraregistro	=#{fechaHoraRegistro, jdbcType=TIMESTAMP},
+				estimacioncuantia	=#{estimacionCuantia, jdbcType=NUMERIC},
+				observacioncambioestado	=#{observacionCambioEstado, jdbcType=VARCHAR},
+				id_sedeprimerinterviniente	=#{idSedePrimerInterviniente, jdbcType=NUMERIC},
+				id_oficinaatiendecaso	=#{idOficinaAtiendeCaso, jdbcType=NUMERIC},
+				estimaciondano	=#{estimacionDano, jdbcType=NUMERIC},
+				id_mensaje	=#{idMensaje, jdbcType=NUMERIC},
+				idr2police	=#{idR2Police, jdbcType=VARCHAR},
+				id_estadonoticia	=#{idEstadoNoticia, jdbcType=NUMERIC},
+				id_tiponoticia	=#{idTipoNoticia, jdbcType=NUMERIC},
+				id_modooperacion	=#{idModoOperacion, jdbcType=NUMERIC},
+				id_institucion	=#{idInstitucion, jdbcType=NUMERIC},
+				id_tipoprimerinterviniente	=#{idTipoPrimerInterviniente, jdbcType=NUMERIC},
+				id_especialidadservicio	=#{idEspecialidadServicio, jdbcType=NUMERIC},
+				id_remitente	=#{idRemitente, jdbcType=NUMERIC},
+				id_finalizador	=#{idFinalizador, jdbcType=NUMERIC},
+				fechahorafinal	=#{fechaHoraFinal, jdbcType=TIMESTAMP},
+				referencia	=#{referencia, jdbcType=VARCHAR},
+				manual	=#{manual, jdbcType=TINYINT},
+				esnoticiacriminal	=#{esNoticiaCriminal, jdbcType=TINYINT},
+				id_origen	=#{idOrigen, jdbcType=NUMERIC},
+				fechainforme =#{fechaInforme, jdbcType=TIMESTAMP}		
+		<include refid="wherePrimaryKeyFragment" />
+	</update>
+
+
+	<delete id="eliminar" parameterType="NoticiaCriminal">
+		delete from nc_noticiacriminal_tb
+		<include refid="wherePrimaryKeyFragment" />
+	</delete>
+
+
+</mapper>

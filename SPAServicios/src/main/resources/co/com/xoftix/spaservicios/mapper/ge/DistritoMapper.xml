@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+		PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="co.com.xoftix.spaservicios.mapper.ge.DistritoMapper">
+	  <cache type="org.mybatis.caches.hazelcast.LoggingHazelcastCache"/>
+	<sql id="selectFragment">
+		select
+			id as  id
+			,id_provincia as  idProvincia
+			,nombre as  nombre
+			,codigo as  codigo
+			,escabecera as  escabecera
+			,activo as activo
+		from ge_distrito_tb
+	</sql>
+	<sql id="whereFragment">
+		<where>
+			<if test="id !=null">
+				id = #{id} 
+			</if>
+			<if test="idProvincia !=null">
+				AND id_provincia = #{idProvincia} 
+			</if>
+			<if test="nombre !=null">
+				AND nombre like #{nombre} 
+			</if>
+			<if test="codigo !=null">
+				AND codigo = #{codigo} 
+			</if>
+			<if test="escabecera !=null">
+				AND escabecera = #{escabecera} 
+			</if>
+			<if test="activo !=null">
+				AND activo = #{activo} 
+			</if>
+		</where>
+	</sql>
+	<sql id="wherePrimaryKeyFragment">
+		where
+			id	= #{id} 
+	</sql>
+	<select id="consultar" parameterType="Distrito" resultType="Distrito" useCache="true">
+		<include refid="selectFragment" />
+		<include refid="whereFragment" />
+	</select>
+</mapper>

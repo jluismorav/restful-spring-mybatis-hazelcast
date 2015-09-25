@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper
+		PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="co.com.xoftix.spaservicios.mapper.ge.UnidadReceptoraMapper">
+
+	 <cache type="org.mybatis.caches.hazelcast.LoggingHazelcastCache"/>
+	<select id="consultar" resultType="UnidadReceptora"
+		parameterType="UnidadReceptora" useCache="true">
+
+		<include refid="whereFragment" />
+	</select>
+
+
+
+	<sql id="whereFragment">
+
+	</sql>
+
+
+</mapper>
